@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block aboutHome %}active{% endblock %}
+
+{% block content %}
+
+    <br><br><br><br><br><br>
+    <center>
+        <div class="container msg">
+            {{msg}}
+        </div>
+
+        <br>
+        <h1>OR</h1>
+        <br>
+        
+        <div class="container msg">
+            Visit Add Stock to view real-time stock of saved companies
+        </div>
+    </center>
+    
+    
+
+    {% if api %}
+        {% if api == 'Error' %}
+            error
+        {% else %}
+            <h1>{{ api.companyName }}</h1><br>
+            Latest Price: {{ api.latestPrice }} <br>
+            Latest Time: {{ api.latestTime }} <br>
+            Previous Close: {{ api.previousClose }} <br>
+            Change: {{ api.changePercent }}% <br>
+            Market Cap: {{ api.marketCap }} <br>
+        {% endif %}
+    {% else %}
+        
+    {% endif %}
+
+{% endblock %}
